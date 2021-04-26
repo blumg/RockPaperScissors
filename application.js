@@ -1,9 +1,5 @@
-let randomchoice;
-let randomnr;
-let result;
-let computerCount;
-let playerCount;
-let i;
+let computerCount = 0;
+let playerCount = 0;
 
 
 
@@ -19,70 +15,86 @@ images.forEach((image) =>
 
 
 // game logic
-function computerplay(randomchoice) {
-        randomnr = (Math.random() * 3);
+function computerplay() {
+    let randomnr = (Math.random() * 3);
+  	let randomchoice = '';
+  	let obj = {
+    randomnr: randomnr,
+    randomchoice: randomchoice,
+    };
+ 
     if (randomnr == 0){
-        randomchoice.value = "Rock";
-      	return randomchoice.value;
+        randomchoice = "Rock";
     }
     else if (randomnr == 1) {
-        randomchoice.value = "Paper";
-      	return randomchoice.value;
+        randomchoice = "Paper";
     }
     else if (randomnr == 2) {
-        randomchoice.value = "Scissors";
-      	return randomchoice.value;
+        randomchoice = "Scissors";
     }
-}
-
-function singleround() {
-  let input = window.prompt("Your Choice:");
-  alert("You chose:" + input);
-    playerSelection = input;
-  	const inputs = [];
-    playerSelection = playerSelection().toLowerCase();
-    playerSelection = playerSelection().toUpperCase();
-    randomchoice = randomchoice().toLowerCase();
-    randomchoice = randomchoice().toUpperCase();
-  	let arr = ["Rock", "Paper", "Scissors"];
+  return obj;
+  	
   
-    
-
-    if (playerSelection == randomchoice) {
-        result = "Square";
-        return result;
-    }
-    else if (playerSelection == randomarray[i] ++) {
-        result = "You won";
-        playerCount = playerCount ++;
-            let obj = {
-        result: result,
-        playerCount: playerCount,
-    };
-    return obj;
-    }
-    else {
-        result = "You lost";
-        computerCount = computerCount ++;
-        let obj = {
-        result: result,
-        playerCount: playerCount,
-    };
-    return obj;
-    
-    }
+   
 }
-function playgame() {
-        while (playerCount < 6) {
-                while (computerCount < 6) {
-                singleround.repeat(10);
-            }
-       
-                if (playerCount == 5) {
-                    console.log("You won the game");
-            }
-        
-            }
 
 
+function singleround(input) {
+  let result = '';
+  let computerChoice = computerplay();
+  input = window.prompt("Your Choice:");
+  alert("You chose:" + input);
+  let playerSelection = input;
+  	playerSelection = playerSelection().toLowerCase();
+    playerSelection = playerSelection().toUpperCase();
+
+    
+
+  if (playerSelection == computerChoice) {
+        result = "Square";
+      	console.log(result);
     }
+    else if (playerSelection == randomnr +1) {
+        result = "You won";
+        console.log(result);
+    } else {
+        result = "You lost";
+        console.log(result);
+    }
+  return result;
+    }
+
+function playGame() 
+let result = "";
+let sr = singleround();
+  sr.repeat(9);
+    while (result == "") {
+  if (sr == "You won") {
+       playerCount ++;
+  }
+    if (playerCount == 5) {
+      result = "playerwins";
+     } 
+  else if (sr == "You lost") {
+    computerCount ++;
+  }
+    if (computerCount == 5) {
+      result = "computerwins";
+  }
+    return result;
+  
+}
+  
+
+function wehaveawinner(win) {
+  	win = playGame();
+  	let message.textContent = "";
+      if (win == "playerwins") {
+        message.textContent("The player wins");
+      } else {
+        message.textContent("The computer wins");
+        
+      }
+   
+
+  } 
